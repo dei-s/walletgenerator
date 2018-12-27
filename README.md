@@ -11,6 +11,7 @@ Usage: walletgenerator [options]
 
   -a, --append            append to existing wallet.dat / addresses.csv
   -c, --count <value>     number of addresses to generate
+  -m, --mirnet            generate mirnet addresses
   -t, --testnet           generate testnet addresses
   -p, --password <value>  wallet password
   -f, --filter <value>    filter addresses with a specific pattern

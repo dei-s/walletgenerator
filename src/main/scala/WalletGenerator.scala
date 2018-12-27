@@ -7,7 +7,7 @@ import scorex.crypto.encode.Base58
 import scopt.OptionParser
 import org.h2.mvstore.{MVMap, MVStore}
 
-case class Config(append: Boolean = false, count: Int = 1, testnet: Boolean = false, password: String = "", filter: String = "", sensitive: Boolean = false)
+case class Config(append: Boolean = false, count: Int = 1, mirnet: Boolean = false, testnet: Boolean = false, password: String = "", filter: String = "", sensitive: Boolean = false)
 
 object WalletGenerator extends App {
 
@@ -20,6 +20,8 @@ object WalletGenerator extends App {
       c.copy(append = true)).text("append to existing wallet.dat / addresses.csv")
     opt[Int]('c', "count").action((x, c) =>
       c.copy(count = x)).text("number of addresses to generate")
+    opt[Unit]('m', "mirnet").action((_, c) =>
+      c.copy(mirnet = true)).text("generate mirnet addresses")
     opt[Unit]('t', "testnet").action((_, c) =>
       c.copy(testnet = true)).text("generate testnet addresses")
     opt[String]('p', "password").action((x, c) =>
@@ -241,7 +243,7 @@ object WalletGenerator extends App {
   parser.parse(args, Config()) map { config =>
 
     val addrVersion:Byte = 1
-    val chainId:Byte = if(config.testnet) 'T' else 'W'
+    val chainId:Byte = if(config.mirnet) 'S' else if(config.testnet) 'T' else 'W'
 
     if (!config.append) new File(WalletFileName).delete()
     val db: MVStore = new MVStore.Builder().fileName(WalletFileName).encryptionKey(config.password.toCharArray).compress().open()
