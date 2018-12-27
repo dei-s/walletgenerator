@@ -92,3 +92,50 @@ private key  : F188SVQneiUmWsV4xJruR2mZVzsvRdWYKG2EWVPidfH9
 address      : 3PQAzuDDW9AhBWAVEbijz5Ttp8xv6A298gv
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 ```
+
+# Usage Sbt
+
+```
+$ sbt
+sbt:walletgenerator> run --testnet
+```
+
+## Usage Sbt Console
+
+```
+$ sbt console
+scala> WalletGenerator.main(Array("--testnet", "--count", "10"))
+```
+
+## Examples
+
+Generate testnet addresses. Output to screen, wallet.dat and addresses.csv (optional).
+```
+sbt:walletgenerator> run --testnet --count 3
+[info] Running WalletGenerator --testnet --count 3
+
+address #    : 1
+seed         : doll lucky seven gauge myth wink happy coral false blame inherit sort clock awesome force web copy joy
+public key   : 7LgX7JASNDkQsKgfPhrqd6H8LmbnPHzBhEikjUpSB4xw
+private key  : 98ZvTTn4ujNg4QbPXfohC7P15hxzpC7NuLvKTPHXjS4m
+address      : 3N8UGY4HnfGBYF5Nzbwq1vCQpnwqVBKYBgt
+------------------------------------------------------------------------------------------------------------------------------------------------------
+address #    : 2
+seed         : veteran mansion person border trigger giant race rabbit benefit case priority century wrong wheat catalog flight liquid tail
+public key   : 4m8Q9egMxYrGCJnR8b5AywrCS9BeT1RPHLr1oALE2M6P
+private key  : Bn7AGmBqqNcpXkzjKpMpbg9LEW23ntQG8sM9o4hpgEHP
+address      : 3N2pN5nxbL8um3ttF8CCm8sDUw3YfhBVc48
+------------------------------------------------------------------------------------------------------------------------------------------------------
+address #    : 3
+seed         : believe total decorate give labor laptop current drift grain wise someone blood casual inherit unable vicious ride begin
+public key   : CuBTHCbiu8ncxmd6WnUsnGVDmUAnSminK2WG2m74P2hw
+private key  : CsfzrBK9xHdVG7jHWwxzEUdTYCkTgCXoxGSyEZr35z2y
+address      : 3MtxN4LyCYXtWWmR3u1QdY1sHXGGy1JxKcG
+------------------------------------------------------------------------------------------------------------------------------------------------------
+```
+
+# Assembly
+
+```
+sbt assembly
+```
